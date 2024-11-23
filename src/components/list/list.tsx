@@ -2,7 +2,7 @@ import type { FC, ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
 
-interface ListProps extends ComponentProps<"ul"> {}
+type ListProps = ComponentProps<"ul">;
 
 export const List: FC<ListProps> = ({ children, className, ...props }) => {
   return (
@@ -12,7 +12,7 @@ export const List: FC<ListProps> = ({ children, className, ...props }) => {
   );
 };
 
-interface ListItemProps extends ComponentProps<"li"> {}
+type ListItemProps = ComponentProps<"li">;
 
 export const ListItem: FC<ListItemProps> = ({ className, children, ...props }) => {
   return (

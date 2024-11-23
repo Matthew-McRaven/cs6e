@@ -1,17 +1,10 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { getFilesFor, getSections } from "@services/docs";
 import { SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
 
 import Side from "./components/sidebar";
 
-export default async function Page({
-  children,
-  ...props
-}: {
-  params: Promise<{ section: string }>;
-  children: ReactNode;
-}) {
-  const { section } = await props.params;
+export default async function Page({ children }: { params: Promise<{ section: string }>; children: ReactNode }) {
   const allSections = await getSections();
 
   const sectionData = await Promise.all(
