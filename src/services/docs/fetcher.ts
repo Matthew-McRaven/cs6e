@@ -1,17 +1,12 @@
 import path from "node:path";
 import fs from "node:fs/promises";
-import rehypeStringify from "rehype-stringify";
-import remarkGfm from "remark-gfm";
-import remarkParse from "remark-parse";
-import remarkRehype from "remark-rehype";
-import { unified } from "unified";
 
-interface FileResponse {
+interface FileData {
   name: string;
   path: string;
 }
 
-export const getSections = async (): Promise<FileResponse[]> => {
+export const getSections = async (): Promise<FileData[]> => {
   const directoryContent = await fs.readdir(path.resolve("./src/services/docs/content"), {
     withFileTypes: true,
   });
@@ -21,7 +16,7 @@ export const getSections = async (): Promise<FileResponse[]> => {
     .map((dirent) => ({ name: dirent.name, path: dirent.parentPath + "/" + dirent.name }));
 };
 
-export const getFilesFor = async (section: Pick<FileResponse, "path">): Promise<FileResponse[]> => {
+export const getFilesFor = async (section: Pick<FileData, "path">): Promise<FileData[]> => {
   const sectionFiles = await fs.readdir(section.path);
 
   return sectionFiles
@@ -32,9 +27,34 @@ export const getFilesFor = async (section: Pick<FileResponse, "path">): Promise<
     }));
 };
 
-export const getFileContent = async (file: Pick<FileResponse, "path">): Promise<string> => {
-  const md = await fs.readFile(file.path, "utf-8");
+export const getFileContent = async (file: Pick<FileData, "path">): Promise<string> => {
+  return fs.readFile(file.path, "utf-8");
+};
 
-  const result = await unified().use(remarkParse).use(remarkGfm).use(remarkRehype).use(rehypeStringify).process(md);
-  return result.toString();
+export const getSection = async (section: string): Promise<FileData> => {
+  const sections = await getSections();
+
+  const match = sections.find(({ name }) => name === section);
+
+  if (!match) {
+    throw new Error();
+  }
+
+  return match;
+};
+
+export const getFilesForSection = async (section: string): Promise<FileData[]> => {
+  return getSection(section).then(getFilesFor);
+};
+
+export const getFileFromSection = async (section: string, slug: string): Promise<FileData> => {
+  const files = await getFilesForSection(section);
+
+  const match = files.find(({ name }) => name === slug);
+
+  if (!match) {
+    throw new Error();
+  }
+
+  return match;
 };
