@@ -8,11 +8,9 @@ export default async function Page(props: { params: Promise<{ section: string; s
 
   const files = await getFilesFor(section);
 
-  console.log({ params, sections, section, files, page: files.find((file) => file.name === params.slug)! });
-
   const page = await getFileContent(files.find((file) => file.name === params.slug)!);
 
-  return <div>slug {JSON.stringify(page)}</div>;
+  return <div dangerouslySetInnerHTML={{ __html: page }} />;
 }
 
 export async function generateStaticParams({ params }: { params: { section: string } }) {

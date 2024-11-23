@@ -1,5 +1,10 @@
 import path from "node:path";
 import fs from "node:fs/promises";
+import rehypeStringify from "rehype-stringify";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
+import { unified } from "unified";
 
 interface FileResponse {
   name: string;
@@ -28,6 +33,8 @@ export const getFilesFor = async (section: Pick<FileResponse, "path">): Promise<
 };
 
 export const getFileContent = async (file: Pick<FileResponse, "path">): Promise<string> => {
-  console.log({ file });
-  return fs.readFile(file.path, "utf-8");
+  const md = await fs.readFile(file.path, "utf-8");
+
+  const result = await unified().use(remarkParse).use(remarkGfm).use(remarkRehype).use(rehypeStringify).process(md);
+  return result.toString();
 };
