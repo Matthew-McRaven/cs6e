@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { getFilesFor, getSections } from "@services/docs";
-import { SidebarProvider, SidebarTrigger } from "@components/ui/sidebar";
+import { SidebarProvider } from "@components/ui/sidebar";
 
 import Side from "./components/sidebar";
 
