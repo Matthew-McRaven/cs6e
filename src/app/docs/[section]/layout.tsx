@@ -22,10 +22,7 @@ export default async function Page({ children }: { params: Promise<{ section: st
     <SidebarProvider>
       <div className="flex">
         <Side navItems={navItems} />
-        <article className="mx-8">
-          <SidebarTrigger />
-          {children}
-        </article>
+        <article className="mx-8">{children}</article>
       </div>
     </SidebarProvider>
   );
