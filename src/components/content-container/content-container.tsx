@@ -10,7 +10,7 @@ interface ContentContainerProps {
 const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "primary" }) => {
   const variantMapping = {
     primary: "",
-    secondary: "",
+    secondary: "bg-violet-50",
     gradient: "bg-gradient-to-br from-purple-900 via-purple-800 to-amber-700 opacity-90",
   };
 
