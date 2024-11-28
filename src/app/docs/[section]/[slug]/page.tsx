@@ -13,7 +13,6 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
