@@ -7,13 +7,13 @@ import Side from "./components/sidebar";
 export default async function Page({ children }: { params: Promise<{ section: string }>; children: ReactNode }) {
   const allSections = await getSections();
 
-  const sectionData = await Promise.all(
+  const navItems = await Promise.all(
     allSections.map(async (section) => {
       const files = await getFilesFor(section);
 
       return {
-        name: section.name,
-        pages: files.map(({ name }) => name),
+        title: section.name,
+        items: files.map(({ name }) => ({ title: name })),
       };
     })
   );
@@ -21,11 +21,8 @@ export default async function Page({ children }: { params: Promise<{ section: st
   return (
     <SidebarProvider>
       <div className="flex">
-        <Side sectionData={sectionData} />
-        <article className="mx-8">
-          <SidebarTrigger />
-          {children}
-        </article>
+        <Side navItems={navItems} />
+        <article className="mx-8">{children}</article>
       </div>
     </SidebarProvider>
   );

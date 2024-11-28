@@ -1,13 +1,26 @@
 import type { Options } from "react-markdown";
 
-import ReactMarkdown from "react-markdown";
+import MarkdownRenderer from "react-markdown";
 import remarkGfm from "remark-gfm";
+import matter from "gray-matter";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@components/ui/table";
 import { Heading, Text } from "@components/typography";
 import { List, ListItem } from "@components/list";
 
 import { getFileContent, getFileFromSection, getFilesFor, getSections } from "@services/docs";
+import { SidebarTrigger } from "@/components/ui/sidebar";
+
+import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 const components: Options["components"] = {
   table: (props) => <Table {...props} />,
@@ -33,12 +46,35 @@ export default async function Page(props: { params: Promise<{ section: string; s
   const params = await props.params;
 
   const file = await getFileFromSection(params.section, params.slug);
-  const page = await getFileContent(file);
+  const markdown = await getFileContent(file);
+  const { data: frontmatter, content } = matter(markdown);
 
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
-      {page}
-    </ReactMarkdown>
+    <>
+      <div>
+        <Breadcrumb className="py-4">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink asChild>
+                <Link href="../">Documentation</Link>
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{params.section}</BreadcrumbPage>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
+      <div className="flex content-center items-center pb-4">
+        <SidebarTrigger />
+        <Heading>{frontmatter.title}</Heading>
+      </div>
+      <MarkdownRenderer remarkPlugins={[remarkGfm]} components={components}>
+        {content}
+      </MarkdownRenderer>
+    </>
   );
 }
 

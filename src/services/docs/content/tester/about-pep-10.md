@@ -1,4 +1,7 @@
-# About Pep/10
+---
+title: "About Pep/10"
+description: "An overview of Pep/10, a 16-bit CISC architecture introduced in the 6th edition of Computer Systems. It covers its new IDE, designed for multi-platform use, as well as its instruction set, addressing modes, and the roles of its registers, emphasizing its educational purpose in teaching computer architecture and assembly language."
+---
 
 - Pep/10 is the new architecture for upcoming Computer Systems, 6th edition (CS6E), with some major changes over [Pep/9](https://github.com/StanWarford/pep9suite) and [Computer Systems, 5th edition](https://computersystemsbook.com/)
   - Both have companion software to allow students to write & debug assembly language programs
