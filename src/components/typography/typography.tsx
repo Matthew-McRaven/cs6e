@@ -45,7 +45,7 @@ interface TypographyBlockquoteProps {
 }
 
 export const TypographyBlockquote: FC<TypographyBlockquoteProps> = ({ children }) => {
-  return <blockquote className="mt-6 border-l-2 pl-6 italic">{children}</blockquote>;
+  return <blockquote className="mt-6 border-l-4 border-violet-700 pl-6 italic text-xl">{children}</blockquote>;
 };
 
 interface TypographyInlineCodeProps {
