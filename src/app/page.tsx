@@ -1,15 +1,9 @@
-import { cn } from "@/lib/utils";
 import { Card, CardContent } from "@components/ui/card";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@components/ui/navigation-menu";
+
 import Link from "next/link";
-import { ReactNode } from "react";
+import SiteHeader from "./components/site-header";
+import ContentContainer from "@components/content-container";
+import { Button } from "@components/ui/button";
 
 export default function Home() {
   return (
@@ -29,7 +23,9 @@ export default function Home() {
                   with the goal of a unified systems perspective.
                 </p>
                 <div className="mt-4">
-                  <Link href="/docs"> View Docs </Link>
+                  <Button asChild>
+                    <Link href="/docs"> View Docs </Link>
+                  </Button>
                 </div>
               </div>
               <div className="flex justify-center">
@@ -77,118 +73,3 @@ export default function Home() {
     </>
   );
 }
-
-function SiteHeader() {
-  return (
-    <header className="sticky top-0 z-50 w-full flex items-center justify-center border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <Link href="/" className="mr-8 flex items-center space-x-2">
-          <span className="text-xl font-bold">Computer Systems</span>
-        </Link>
-        <NavigationMenu>
-          <NavigationMenuList>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Editions</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <Link
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                        href="/"
-                      >
-                        <div className="mb-2 mt-4 text-lg font-medium">Fifth Edition</div>
-                        <p className="text-sm leading-tight text-muted-foreground">
-                          The newest edition for students and professionals
-                        </p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="/"
-                      >
-                        <div className="text-sm font-medium leading-none">Software Downloads</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Access simulation tools and example code
-                        </p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="/"
-                      >
-                        <div className="text-sm font-medium leading-none">Video Lectures</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Watch comprehensive video lectures
-                        </p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="/"
-                      >
-                        <div className="text-sm font-medium leading-none">Video Tutorials</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Step-by-step tutorials and demonstrations
-                        </p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="/"
-                      >
-                        <div className="text-sm font-medium leading-none">Additional Resources</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                          Supplementary materials and references
-                        </p>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-      </div>
-    </header>
-  );
-}
-
-const ContentContainer = ({
-  children,
-  variant = "primary",
-}: {
-  children: ReactNode;
-  variant?: "primary" | "secondary" | "gradient";
-}) => {
-  const variantMapping = {
-    primary: "",
-    secondary: "",
-    gradient: "bg-gradient-to-br from-purple-900 via-purple-800 to-amber-700 opacity-90",
-  };
-
-  return (
-    <div className={cn("w-full flex flex-col justify-center items-center p-8", variantMapping[variant])}>
-      <div className="container ">{children}</div>
-    </div>
-  );
-};
