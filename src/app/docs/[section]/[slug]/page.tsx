@@ -1,6 +1,6 @@
 import type { Options } from "react-markdown";
 
-import ReactMarkdown from "react-markdown";
+import MarkdownRenderer from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@components/ui/table";
@@ -36,9 +36,9 @@ export default async function Page(props: { params: Promise<{ section: string; s
   const page = await getFileContent(file);
 
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} components={components}>
+    <MarkdownRenderer remarkPlugins={[remarkGfm]} components={components}>
       {page}
-    </ReactMarkdown>
+    </MarkdownRenderer>
   );
 }
 
