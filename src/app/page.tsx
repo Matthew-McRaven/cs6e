@@ -93,7 +93,7 @@ function SiteHeader() {
                 <ul className="grid w-[400px] gap-3 p-4">
                   <li className="row-span-3">
                     <NavigationMenuLink asChild>
-                      <a
+                      <Link
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
                         href="/"
                       >
@@ -101,7 +101,7 @@ function SiteHeader() {
                         <p className="text-sm leading-tight text-muted-foreground">
                           The newest edition for students and professionals
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
@@ -113,7 +113,7 @@ function SiteHeader() {
                 <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                   <li>
                     <NavigationMenuLink asChild>
-                      <a
+                      <Link
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         href="/"
                       >
@@ -121,12 +121,12 @@ function SiteHeader() {
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Access simulation tools and example code
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a
+                      <Link
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         href="/"
                       >
@@ -134,12 +134,12 @@ function SiteHeader() {
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Watch comprehensive video lectures
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a
+                      <Link
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         href="/"
                       >
@@ -147,12 +147,12 @@ function SiteHeader() {
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Step-by-step tutorials and demonstrations
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                   <li>
                     <NavigationMenuLink asChild>
-                      <a
+                      <Link
                         className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                         href="/"
                       >
@@ -160,7 +160,7 @@ function SiteHeader() {
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Supplementary materials and references
                         </p>
-                      </a>
+                      </Link>
                     </NavigationMenuLink>
                   </li>
                 </ul>
