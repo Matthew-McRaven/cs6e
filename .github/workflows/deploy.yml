@@ -2,7 +2,7 @@ name: Verify and Publish
 
 on:
   push:
-  workflow_dispatch:
+    branches: [main]
 
 jobs:
   verify:
