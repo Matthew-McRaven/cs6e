@@ -1,9 +1,7 @@
 import { Card, CardContent } from "@components/ui/card";
 
-import Link from "next/link";
 import SiteHeader from "./components/site-header";
 import ContentContainer from "@components/content-container";
-import { Button } from "@components/ui/button";
 import { Text } from "@components/typography";
 import Hero from "./components/hero";
 import About from "./components/about";
