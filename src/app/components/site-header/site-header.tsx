@@ -20,7 +20,7 @@ const navigationItems = [
     href: "/preface",
     subMenu: [
       { title: "Preface", href: "#" },
-      { title: "Table of Contents", href: "#" },
+      { title: "Table of Contents", href: "./table-of-contents" },
     ],
   },
   {
