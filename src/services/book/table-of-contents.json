@@ -1,0 +1,288 @@
+{
+  "chapters": [
+    {
+      "id": "ch1",
+      "title": "Computer Systems",
+      "children": [
+        {
+          "id": "ch1.1",
+          "title": "Levels of Abstraction",
+          "children": [
+            { "id": "ch1.1.1", "title": "Abstraction in Art" },
+            { "id": "ch1.1.2", "title": "Abstraction in Documents" },
+            { "id": "ch1.1.3", "title": "Abstraction in Organizations" },
+            { "id": "ch1.1.4", "title": "Abstraction in Machines" },
+            { "id": "ch1.1.5", "title": "Abstraction in Computer Systems" }
+          ]
+        },
+        {
+          "id": "ch1.2",
+          "title": "Hardware",
+          "children": [
+            { "id": "ch1.2.1", "title": "Central Processing Unit" },
+            { "id": "ch1.2.2", "title": "Main Memory" },
+            { "id": "ch1.2.3", "title": "Disk" }
+          ]
+        },
+        {
+          "id": "ch1.3",
+          "title": "Software",
+          "children": [
+            { "id": "ch1.3.1", "title": "Operating Systems" },
+            { "id": "ch1.3.2", "title": "Software Analysis and Design" }
+          ]
+        },
+        {
+          "id": "ch1.4",
+          "title": "Digital Information",
+          "children": [
+            { "id": "ch1.4.1", "title": "Quantifying Space" },
+            { "id": "ch1.4.2", "title": "Quantifying Time" },
+            { "id": "ch1.4.3", "title": "Quick Response Codes" },
+            { "id": "ch1.4.4", "title": "Images" }
+          ]
+        },
+        {
+          "id": "ch1.5",
+          "title": "Database Systems",
+          "children": [
+            { "id": "ch1.5.1", "title": "Relations" },
+            { "id": "ch1.5.2", "title": "Queries" },
+            { "id": "ch1.5.3", "title": "Structure of the Language" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch2",
+      "title": "C",
+      "children": [
+        {
+          "id": "ch2.1",
+          "title": "Variables",
+          "children": [
+            { "id": "ch2.1.1", "title": "The C Compiler" },
+            { "id": "ch2.1.2", "title": "Machine Independence" },
+            { "id": "ch2.1.3", "title": "The C Memory Model" },
+            { "id": "ch2.1.4", "title": "Global Variables and Assignment Statements" },
+            { "id": "ch2.1.5", "title": "Local Variables" }
+          ]
+        },
+        {
+          "id": "ch2.2",
+          "title": "Flow of Control",
+          "children": [
+            { "id": "ch2.2.1", "title": "The If/Else Statement" },
+            { "id": "ch2.2.2", "title": "The Switch Statement" },
+            { "id": "ch2.2.3", "title": "The While Loop" },
+            { "id": "ch2.2.4", "title": "The Do Loop" },
+            { "id": "ch2.2.5", "title": "Arrays and the For Loop" }
+          ]
+        },
+        {
+          "id": "ch2.3",
+          "title": "Functions",
+          "children": [
+            { "id": "ch2.3.1", "title": "Void Functions and Call-by-Value Parameters" },
+            { "id": "ch2.3.2", "title": "Call-by-Reference Parameters" }
+          ]
+        },
+        {
+          "id": "ch2.4",
+          "title": "Recursion",
+          "children": [
+            { "id": "ch2.4.1", "title": "A Factorial Function" },
+            { "id": "ch2.4.2", "title": "Thinking Recursively" },
+            { "id": "ch2.4.3", "title": "Recursive Addition" },
+            { "id": "ch2.4.4", "title": "A Binomial Coefficient Function" },
+            { "id": "ch2.4.5", "title": "Reversing the Elements of an Array" },
+            { "id": "ch2.4.6", "title": "Towers of Hanoi" },
+            { "id": "ch2.4.7", "title": "Mutual Recursion" },
+            { "id": "ch2.4.8", "title": "The Cost of Recursion" }
+          ]
+        },
+        {
+          "id": "ch2.5",
+          "title": "Dynamic Memory Allocation",
+          "children": [
+            { "id": "ch2.5.1", "title": "Pointers" },
+            { "id": "ch2.5.2", "title": "Structures" },
+            { "id": "ch2.5.3", "title": "Linked Data Structures" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch3",
+      "title": "Information Representation",
+      "children": [
+        {
+          "id": "ch3.1",
+          "title": "Unsigned Binary Representations",
+          "children": [
+            { "id": "ch3.1.1", "title": "Binary Storage" },
+            { "id": "ch3.1.2", "title": "Integers" },
+            { "id": "ch3.1.3", "title": "Base Conversions" },
+            { "id": "ch3.1.4", "title": "Range for Unsigned Integers" },
+            { "id": "ch3.1.5", "title": "Unsigned Addition" },
+            { "id": "ch3.1.6", "title": "The Carry Bit" }
+          ]
+        },
+
+        {
+          "id": "ch3.2",
+          "title": "Two’s Complement Binary Representation",
+          "children": [
+            { "id": "ch3.2.1", "title": "Two’s Complement Range" },
+            { "id": "ch3.2.2", "title": "Base Conversions" },
+            { "id": "ch3.2.3", "title": "The Number Line" },
+            { "id": "ch3.2.4", "title": "The Overflow Bit" },
+            { "id": "ch3.2.5", "title": "The Negative and Zero Bits" }
+          ]
+        },
+        {
+          "id": "ch3.3",
+          "title": "Operations in Binary",
+          "children": [
+            { "id": "ch3.3.1", "title": "Logical Operators" },
+            { "id": "ch3.3.2", "title": "Register Transfer Language" },
+            { "id": "ch3.3.3", "title": "Arithmetic Operators" },
+            { "id": "ch3.3.4", "title": "Rotate Operators" }
+          ]
+        },
+        {
+          "id": "ch3.4",
+          "title": "Hexadecimal and Character Representation",
+          "children": [
+            { "id": "ch3.4.1", "title": "Hexadecimal" },
+            { "id": "ch3.4.2", "title": "Base Conversions" },
+            { "id": "ch3.4.3", "title": "ASCII Characters" },
+            { "id": "ch3.4.4", "title": "Unicode Characters" }
+          ]
+        },
+        {
+          "id": "ch3.5",
+          "title": "Floating-Point Representation",
+          "children": [
+            { "id": "ch3.5.1", "title": "Excess Representations" },
+            { "id": "ch3.5.2", "title": "The Hidden Bit" },
+            { "id": "ch3.5.3", "title": "Special Values" },
+            { "id": "ch3.5.4", "title": "The IEEE 754 Floating-Point Standard" }
+          ]
+        },
+        {
+          "id": "ch3.6",
+          "title": "Models",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "ch4",
+      "title": "Computer Architecture",
+      "children": [
+        {
+          "id": "ch4.1",
+          "title": "Hardware",
+          "children": [
+            { "id": "ch4.1.1", "title": "Central Processing Unit" },
+            { "id": "ch4.1.2", "title": "Main Memory" },
+            { "id": "ch4.1.3", "title": "Input/Output Devices" },
+            { "id": "ch4.1.4", "title": "Data and Control" },
+            { "id": "ch4.1.5", "title": "Instruction Format" }
+          ]
+        },
+        {
+          "id": "ch4.2",
+          "title": "Direct Addressing",
+          "children": [
+            { "id": "ch4.2.1", "title": "The Stop Instruction" },
+            { "id": "ch4.2.2", "title": "The Load Word Instruction" },
+            { "id": "ch4.2.3", "title": "The Store Word Instruction" },
+            { "id": "ch4.2.4", "title": "The Add Instruction" },
+            { "id": "ch4.2.5", "title": "The Subtract Instruction" },
+            { "id": "ch4.2.6", "title": "The And and Or Instructions" },
+            { "id": "ch4.2.7", "title": "The Invert and Negate Instructions" },
+            { "id": "ch4.2.8", "title": "The Load Byte and Store Byte Instructions" },
+            { "id": "ch4.2.9", "title": "The Input and Output Devices" },
+            { "id": "ch4.2.10", "title": "Big Endian Versus Little Endian" }
+          ]
+        },
+        {
+          "id": "ch4.3",
+          "title": "von Neumann Machines",
+          "children": [
+            { "id": "ch4.3.1", "title": "The von Neumann Execution Cycle" },
+            { "id": "ch4.3.2", "title": "A Character Output Program" },
+            { "id": "ch4.3.3", "title": "von Neumann Bugs" },
+            { "id": "ch4.3.4", "title": "A Character Input Program" },
+            { "id": "ch4.3.5", "title": "Converting Decimal to ASCII" },
+            { "id": "ch4.3.6", "title": "A Self-Modifying Program" }
+          ]
+        },
+        {
+          "id": "ch4.4",
+          "title": "Programming at Level ISA3",
+          "children": [
+            { "id": "ch4.4.1", "title": "Read-Only Memory" },
+            { "id": "ch4.4.2", "title": "The Pep/9 Operating System" },
+            { "id": "ch4.4.3", "title": "Using the Pep/9 System" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ch5",
+      "title": "Assembly Language",
+      "children": [
+        {
+          "id": "ch5.1",
+          "title": "Assemblers",
+          "children": [
+            { "id": "ch5.1.1", "title": "Instruction Mnemonics" },
+            { "id": "ch5.1.2", "title": "Pseudo-Operations" },
+            { "id": "ch5.1.3", "title": "The .ASCII and .END Pseudo-ops" },
+            { "id": "ch5.1.4", "title": "Assemblers" },
+            { "id": "ch5.1.5", "title": "The .BLOCK Pseudo-op" },
+            { "id": "ch5.1.6", "title": "The .WORD and .BYTE Pseudo-ops" },
+            { "id": "ch5.1.7", "title": "Using the Pep/9 Assembler" },
+            { "id": "ch5.1.8", "title": "Cross Assemblers" }
+          ]
+        },
+        {
+          "id": "ch5.2",
+          "title": "Immediate Addressing and the Trap Instructions",
+          "children": [
+            { "id": "ch5.2.1", "title": "Immediate Addressing" },
+            { "id": "ch5.2.2", "title": "The DECI, DECO, and BR Instructions" },
+            { "id": "ch5.2.3", "title": "The STRO Instruction" },
+            { "id": "ch5.2.4", "title": "Interpreting Bit Patterns: The HEXO Instruction" },
+            { "id": "ch5.2.5", "title": "Disassemblers" }
+          ]
+        },
+        {
+          "id": "ch5.3",
+          "title": "Symbols",
+          "children": [
+            { "id": "ch5.3.1", "title": "A Program with Symbols" },
+            { "id": "ch5.3.2", "title": "A von Neumann Illustration" }
+          ]
+        },
+        {
+          "id": "ch5.4",
+          "title": "Translating from Level HOL6",
+          "children": [
+            { "id": "ch5.4.1", "title": "The Printf() Function" },
+            { "id": "ch5.4.2", "title": "Variables and Types" },
+            { "id": "ch5.4.3", "title": "Global Variables and Assignment Statements" },
+            { "id": "ch5.4.4", "title": "Type Compatibility" },
+            { "id": "ch5.4.5", "title": "Pep/9 Symbol Tracer" },
+            { "id": "ch5.4.6", "title": "The Shift and Rotate Instructions" },
+            { "id": "ch5.4.7", "title": "Constants and .EQUATE" },
+            { "id": "ch5.4.8", "title": "Placement of Instructions and Data" }
+          ]
+        }
+      ]
+    }
+  ]
+}
