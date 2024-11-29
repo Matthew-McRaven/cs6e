@@ -19,7 +19,7 @@ type HeadingVariants = "h1" | "h2" | "h3" | "h4";
 
 type AllText = TextVariants | HeadingVariants;
 
-const variantMapping: Record<AllText, FC<{ children?: ReactNode }>> = {
+const variantMapping: Record<AllText, FC<{ children?: ReactNode; className?: string }>> = {
   h1: TypographyH1,
   h2: TypographyH2,
   h3: TypographyH3,
@@ -36,21 +36,23 @@ const variantMapping: Record<AllText, FC<{ children?: ReactNode }>> = {
 interface TextProps {
   variant?: TextVariants;
   children?: ReactNode;
+  className?: string;
 }
 
-export const Text: FC<TextProps> = ({ variant = "p", children }) => {
+export const Text: FC<TextProps> = ({ variant = "p", children, ...props }) => {
   const Component = variantMapping[variant];
 
-  return <Component>{children}</Component>;
+  return <Component {...props}>{children}</Component>;
 };
 
 interface HeadingProps {
   variant?: HeadingVariants;
   children?: ReactNode;
+  className?: string;
 }
 
-export const Heading: FC<HeadingProps> = ({ variant = "h1", children }) => {
+export const Heading: FC<HeadingProps> = ({ variant = "h1", children, ...props }) => {
   const Component = variantMapping[variant];
 
-  return <Component>{children}</Component>;
+  return <Component {...props}>{children}</Component>;
 };
