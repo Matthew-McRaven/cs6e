@@ -2,6 +2,8 @@
 
 import { getTableOfContents } from "@services/book";
 import SiteHeader from "../components/site-header";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { useState } from "react";
 
 export default function Page() {
   const tableOfContents = getTableOfContents();
@@ -15,9 +17,6 @@ export default function Page() {
     </div>
   );
 }
-
-import { ChevronDown, ChevronRight } from "lucide-react";
-import { useState } from "react";
 
 interface TocItem {
   id: string;
@@ -61,7 +60,7 @@ const TocEntry = ({ item, level = 0 }: { item: TocItem; level: number }) => {
   );
 };
 
-export function TableOfContents({ tableOfContents }: { tableOfContents: ReturnType<typeof getTableOfContents> }) {
+function TableOfContents({ tableOfContents }: { tableOfContents: ReturnType<typeof getTableOfContents> }) {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <h1 className="text-3xl font-bold mb-2">Computer Systems</h1>
