@@ -18,12 +18,6 @@ export default function Home() {
         <main>
           <Hero />
           <SiteHeader />
-          <ContentContainer>
-            <Text variant="blockquote">
-              Computer Systems is a mature text that uniquely satisfies this important new goal of the latest computer
-              science curriculum guidelines
-            </Text>
-          </ContentContainer>
           <ResourcesVariant />
           <Resources />
           <PepNine />
@@ -81,17 +75,21 @@ const highImpactFeatures = [
 const PepNine = () => {
   return (
     <ContentContainer variant="secondary">
-      <Text>Custom Language Thingy</Text>
-      <Heading variant="h2">Introducting Pep9</Heading>
-      <Text>
-        Pep9 is a simulator allowing users to interact with the Pep/9 virtual machine at the assembly, operating system,
-        and ISA levels.
-      </Text>
-      <div className="w-full min-h-96 bg-slate-200 my-8"></div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {highImpactFeatures.map((feature) => (
-          <PepItem key={feature.title} {...feature} />
-        ))}
+      <div className="lg:py-8">
+        <div className="text-center">
+          <Text>Custom Language Thingy</Text>
+          <Heading variant="h2">Introducing the Pep9 Virtual Machine</Heading>
+          <Text>
+            Pep9 is a simulator allowing users to interact with the Pep/9 virtual machine at the assembly, operating
+            system, and ISA levels.
+          </Text>
+        </div>
+        <div className="w-full min-h-96 bg-slate-200 my-8"></div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {highImpactFeatures.map((feature) => (
+            <PepItem key={feature.title} {...feature} />
+          ))}
+        </div>
       </div>
     </ContentContainer>
   );

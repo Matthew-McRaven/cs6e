@@ -2,7 +2,7 @@ import ContentContainer from "@/components/content-container";
 import { Card, CardContent } from "@/components/ui/card";
 import DiscordIcon from "./discord-icon";
 import { Button } from "@/components/ui/button";
-import { Link } from "lucide-react";
+import Link from "next/link";
 
 const JoinUs = () => {
   return (

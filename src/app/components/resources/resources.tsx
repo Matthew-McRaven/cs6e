@@ -23,29 +23,36 @@ import { GraduationCap, Pencil, PlayIcon, Projector } from "lucide-react";
 export const ResourcesVariant: FC = () => {
   return (
     <ContentContainer>
-      <div>
-        <Text className="text-violet-700">Dive Deeper</Text>
-        <Heading>Included Courses & Resources</Heading>
+      <div className="container mt-8 grid grid-cols-1 items-center gap-8 md:grid-cols-2 ">
+        <div>
+          <div>
+            <Text className="text-violet-700">Dive Deeper</Text>
+            <Heading variant="h2">Included Courses & Resources (v1)</Heading>
+          </div>
+          <Text className="text-gray-600 mt-4">
+            Enhance your learning with comprehensive courses packed with video lectures, slides, and textbook
+            assignments.
+          </Text>
+          <List className="mt-0">
+            <ListItem className="text-gray-600 mt-4">
+              <span className="font-bold text-violet-950">Two Complete Courses.</span> Computer Systems and Computer
+              Organization
+            </ListItem>
+            <ListItem className="text-gray-600 mt-4">
+              <span className="font-bold text-violet-950">Video Lectures.</span> Stream directly on YouTube or on Apple
+              University
+            </ListItem>
+            <ListItem className="text-gray-600 mt-4">
+              <span className="font-bold text-violet-950">Lecture Slides.</span> Downloadable slides for every lecture
+            </ListItem>
+            <ListItem className="text-gray-600 mt-4">
+              <span className="font-bold text-violet-950">Homework Assignments.</span> Practice problems from the
+              textbook
+            </ListItem>
+          </List>
+        </div>
+        <div className="w-full h-full bg-violet-200 rounded-md"></div>
       </div>
-      <Text className="text-gray-600 mt-4">
-        Enhance your learning with comprehensive courses packed with video lectures, slides, and textbook assignments.
-      </Text>
-      <List>
-        <ListItem className="text-gray-600 mt-4">
-          <span className="font-bold text-violet-950">Two Complete Courses.</span> Computer Systems and Computer
-          Organization
-        </ListItem>
-        <ListItem className="text-gray-600 mt-4">
-          <span className="font-bold text-violet-950">Video Lectures.</span> Stream directly on YouTube or on Apple
-          University
-        </ListItem>
-        <ListItem className="text-gray-600 mt-4">
-          <span className="font-bold text-violet-950">Lecture Slides.</span> Downloadable slides for every lecture
-        </ListItem>
-        <ListItem className="text-gray-600 mt-4">
-          <span className="font-bold text-violet-950">Homework Assignments.</span> Practice problems from the textbook
-        </ListItem>
-      </List>
     </ContentContainer>
   );
 };
@@ -56,7 +63,7 @@ const Resources: FC = () => {
     <ContentContainer>
       <div>
         <Text className="text-violet-700">Dive Deeper</Text>
-        <Heading>Included Courses & Resources</Heading>
+        <Heading variant="h2">Included Courses & Resources (v2)</Heading>
       </div>
       <Text className="text-gray-600 mt-4">
         Enhance your learning with comprehensive courses packed with video lectures, slides, and textbook assignments.
