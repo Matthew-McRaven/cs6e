@@ -24,7 +24,7 @@ const JoinUs = () => {
                   size="lg"
                   asChild
                 >
-                  <Link href="https://discord.gg/Qza7QH8"> Join our Discord Server</Link>
+                  <Link href="https://discord.gg/Qza7QH8">Join our Discord Server</Link>
                 </Button>
               </div>
             </div>

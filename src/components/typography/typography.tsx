@@ -19,9 +19,7 @@ interface TypographyH2Props {
 
 export const TypographyH2: FC<TypographyH2Props> = ({ children, className }) => {
   return (
-    <h2 className={cn("scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0", className)}>
-      {children}
-    </h2>
+    <h2 className={cn("scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0", className)}>{children}</h2>
   );
 };
 
@@ -49,7 +47,7 @@ interface TypographyPProps {
 }
 
 export const TypographyP: FC<TypographyPProps> = ({ children, className }) => {
-  return <p className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}>{children}</p>;
+  return <p className={cn("leading-7 [&:not(:first-child)]:mt-6 text-gray-600", className)}>{children}</p>;
 };
 
 interface TypographyBlockquoteProps {
@@ -59,7 +57,7 @@ interface TypographyBlockquoteProps {
 
 export const TypographyBlockquote: FC<TypographyBlockquoteProps> = ({ children, className }) => {
   return (
-    <blockquote className={cn("mt-6 border-l-4 border-violet-700 pl-6 italic text-xl", className)}>
+    <blockquote className={cn("mt-6 border-l-4 border-violet-700 pl-6 italic text-xl  text-gray-600", className)}>
       {children}
     </blockquote>
   );
@@ -73,7 +71,10 @@ interface TypographyInlineCodeProps {
 export const TypographyInlineCode: FC<TypographyInlineCodeProps> = ({ children, className }) => {
   return (
     <code
-      className={cn("relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold", className)}
+      className={cn(
+        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold  text-gray-600",
+        className
+      )}
     >
       {children}
     </code>
@@ -86,7 +87,7 @@ interface TypographyLeadProps {
 }
 
 export const TypographyLead: FC<TypographyLeadProps> = ({ children, className }) => {
-  return <p className={cn("text-xl text-muted-foreground")}>{children}</p>;
+  return <p className={cn("text-xl text-muted-foreground text-gray-600", className)}>{children}</p>;
 };
 
 interface TypographySmallProps {
@@ -95,7 +96,7 @@ interface TypographySmallProps {
 }
 
 export const TypographySmall: FC<TypographySmallProps> = ({ children, className }) => {
-  return <small className={cn("text-sm font-medium leading-none", className)}>{children}</small>;
+  return <small className={cn("text-sm font-medium leading-none text-gray-600", className)}>{children}</small>;
 };
 
 interface TypographyLargeProps {
@@ -104,7 +105,7 @@ interface TypographyLargeProps {
 }
 
 export const TypographyLarge: FC<TypographyLargeProps> = ({ children, className }) => {
-  return <div className={cn("text-lg font-semibold", className)}>{children}</div>;
+  return <div className={cn("text-lg font-semibold text-gray-600", className)}>{children}</div>;
 };
 
 interface TypographyMutedProps {
@@ -113,5 +114,5 @@ interface TypographyMutedProps {
 }
 
 export const TypographyMuted: FC<TypographyMutedProps> = ({ children, className }) => {
-  return <p className={cn("text-sm text-muted-foreground", className)}>{children}</p>;
+  return <p className={cn("text-sm text-muted-foreground text-gray-600", className)}>{children}</p>;
 };

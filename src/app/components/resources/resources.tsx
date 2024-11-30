@@ -1,11 +1,8 @@
 import type { FC } from "react";
 
-import Link from "next/link";
-
 import ContentContainer from "@components/content-container";
-import { Heading, Text } from "@/components/typography";
-import { Button } from "@/components/ui/button";
-import { List, ListItem } from "@/components/list";
+import { Heading, Text } from "@components/typography";
+import { List, ListItem } from "@components/list";
 import { GraduationCap, Pencil, PlayIcon, Projector } from "lucide-react";
 
 // Small Line: Resources Included
