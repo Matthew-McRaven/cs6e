@@ -5,23 +5,34 @@ import Link from "next/link";
 import ContentContainer from "@components/content-container";
 import { Button } from "@components/ui/button";
 import { Card, CardContent } from "@components/ui/card";
+import { Heading, Text } from "@/components/typography";
+import { ArrowRight } from "lucide-react";
 
 const Hero: FC = () => {
   return (
     <ContentContainer variant="gradient">
       <div className="container grid min-h-[800px] grid-cols-1 items-center gap-8 py-20 md:grid-cols-2 lg:py-32">
         <div className="flex flex-col items-start gap-4">
-          <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl xl:text-6xl/none">
-            Computer Systems
-            <p className="text-amber-200">Fifth Edition</p>
-          </h1>
+          <div>
+            <Text className="text-amber-200 font-bold">Fifth Edition</Text>
+            <Heading className="text-4xl font-bold tracking-tighter text-white sm:text-5xl xl:text-6xl/none">
+              Computer Systems
+            </Heading>
+          </div>
           <p className="max-w-[600px] text-zinc-200 md:text-xl">
             The ACM/IEEE curriculum guidelines (CS2013) recommends computer systems as a new body of knowledge with the
             goal of a unified systems perspective.
           </p>
-          <div className="mt-4">
+          <div className="flex gap-4 mt-4">
+            <Button variant="secondary" asChild>
+              <Link href="/docs">
+                View Additional Resources <ArrowRight />
+              </Link>
+            </Button>
             <Button asChild>
-              <Link href="/docs"> View Docs </Link>
+              <Link href="/docs">
+                Download Software <ArrowRight />
+              </Link>
             </Button>
           </div>
         </div>

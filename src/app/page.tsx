@@ -1,54 +1,36 @@
-import { Card, CardContent } from "@components/ui/card";
+import type { ReactNode } from "react";
 
 import SiteHeader from "./components/site-header";
 import ContentContainer from "@components/content-container";
-import { Text } from "@components/typography";
+import { Heading, Text } from "@components/typography";
 import Hero from "./components/hero";
 import About from "./components/about";
 import EditionSummary from "./components/edition-summary";
-import { Button } from "@/components/ui/button";
+import Resources from "./components/resources";
+import { ResourcesVariant } from "./components/resources/resources";
+import JoinUs from "./components/join-us";
+import { EditionSummaryVariant } from "./components/edition-summary/edition-summary";
 
 export default function Home() {
   return (
     <>
       <div className="flex min-h-screen flex-col">
-        <SiteHeader />
         <main>
           <Hero />
+          <SiteHeader />
           <ContentContainer>
             <Text variant="blockquote">
               Computer Systems is a mature text that uniquely satisfies this important new goal of the latest computer
               science curriculum guidelines
             </Text>
           </ContentContainer>
+          <ResourcesVariant />
+          <Resources />
+          <PepNine />
           <About />
           <EditionSummary />
-          <ContentContainer>
-            <div className="w-full flex flex-col items-center justify-center py-32">
-              <Card className="w-full max-w-md mx-auto overflow-hidden">
-                <CardContent className="p-6 bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-center w-16 h-16 mx-auto">
-                      <Discord />
-                    </div>
-                    <h2 className="text-3xl font-bold text-center">Join Our Community!</h2>
-                    <p className="text-center text-indigo-100">
-                      Connect with like-minded individuals, get support, contribute to our open source development, nerd
-                      out!
-                    </p>
-                    <div className="pt-4">
-                      <Button
-                        className="w-full bg-white text-indigo-600 hover:bg-indigo-100 transition-colors duration-300"
-                        size="lg"
-                      >
-                        Join our Discord Server
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </ContentContainer>
+          <EditionSummaryVariant />
+          <JoinUs />
         </main>
         <footer className="min-h-[100px] bg-neutral-800"></footer>
       </div>
@@ -56,9 +38,72 @@ export default function Home() {
   );
 }
 
-const Discord = () => (
-  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white">
-    <title>Discord</title>
-    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z" />
-  </svg>
-);
+import { FileText, AlertCircle, Bug, Code, Search, Book } from "lucide-react";
+
+const highImpactFeatures = [
+  {
+    icon: <FileText className="text-violet-900" />,
+    title: "Integrated Text Editor",
+    description: "A built-in text editor for writing and managing your source code efficiently.",
+  },
+  {
+    icon: <AlertCircle className="text-violet-900" />,
+    title: "Inline Error Messages",
+    description:
+      "Error messages are directly inserted within the source code at the location of the error for immediate feedback.",
+  },
+  {
+    icon: <Code className="text-violet-900" />,
+    title: "Student-Friendly Machine Language",
+    description: "Machine language object code is presented in an easy-to-read hexadecimal format, ideal for learners.",
+  },
+  {
+    icon: <Bug className="text-violet-900" />,
+    title: "Integrated Debugger",
+    description:
+      "Offers breakpoints, single-step execution, CPU tracing, and memory tracing for in-depth debugging capabilities.",
+  },
+
+  {
+    icon: <Search className="text-violet-900" />,
+    title: "Flexible Application Tracing",
+    description:
+      "Allows tracing of the application, loader, or operating system individually or in any combination for granular analysis.",
+  },
+  {
+    icon: <Book className="text-violet-900" />,
+    title: "Built-In Text Examples",
+    description:
+      "Every example from the textbook is integrated into the application, making it a powerful tool for class demonstrations and self-study.",
+  },
+];
+
+const PepNine = () => {
+  return (
+    <ContentContainer variant="secondary">
+      <Text>Custom Language Thingy</Text>
+      <Heading variant="h2">Introducting Pep9</Heading>
+      <Text>
+        Pep9 is a simulator allowing users to interact with the Pep/9 virtual machine at the assembly, operating system,
+        and ISA levels.
+      </Text>
+      <div className="w-full min-h-96 bg-slate-200 my-8"></div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {highImpactFeatures.map((feature) => (
+          <PepItem key={feature.title} {...feature} />
+        ))}
+      </div>
+    </ContentContainer>
+  );
+};
+
+const PepItem = ({ title, description, icon }: { title: string; description: string; icon: ReactNode }) => {
+  return (
+    <div className="flex gap-4">
+      <div>{icon}</div>
+      <Text className="!mt-0 text-gray-600">
+        <span className="font-bold text-violet-950">{title}.</span> {description}
+      </Text>
+    </div>
+  );
+};

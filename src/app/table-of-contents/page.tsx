@@ -4,6 +4,7 @@ import { getTableOfContents } from "@services/book";
 import SiteHeader from "../components/site-header";
 import { ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import ContentContainer from "@/components/content-container";
 
 export default function Page() {
   const tableOfContents = getTableOfContents();
@@ -11,9 +12,9 @@ export default function Page() {
   return (
     <div>
       <SiteHeader />
-      <div className="min-h-screen bg-gray-100 py-12">
+      <ContentContainer variant="secondary">
         <TableOfContents tableOfContents={tableOfContents} />
-      </div>
+      </ContentContainer>
     </div>
   );
 }
@@ -44,7 +45,9 @@ const TocEntry = ({ item, level = 0 }: { item: TocItem; level: number }) => {
             </button>
           )}
           <span className="ml-4" style={{ marginLeft: `${level * 1.5}rem` }}>
-            {level === 0 ? `Chapter ${item.id}: ${item.title}` : `${item.id} ${item.title}`}
+            {level === 0
+              ? `Chapter ${item.id.replace("ch", "")}: ${item.title}`
+              : `${item.id.replace("ch", "")} ${item.title}`}
           </span>
         </div>
         {item.page && <span className="text-gray-500">{item.page}</span>}
@@ -63,9 +66,8 @@ const TocEntry = ({ item, level = 0 }: { item: TocItem; level: number }) => {
 function TableOfContents({ tableOfContents }: { tableOfContents: ReturnType<typeof getTableOfContents> }) {
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-      <h1 className="text-3xl font-bold mb-2">Computer Systems</h1>
-      <h2 className="text-xl text-gray-600 mb-6">Warford</h2>
-      <h3 className="text-2xl font-semibold mb-4">Table of Contents</h3>
+      <p className="text-xl text-gray-600">Fifth Edition</p>
+      <h1 className="text-3xl font-bold mb-6">Computer Systems</h1>
       <nav aria-label="Table of Contents">
         <ul className="space-y-2">
           {tableOfContents.chapters.map((chapter) => (
