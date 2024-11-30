@@ -23,7 +23,7 @@ const Hero: FC = () => {
             The ACM/IEEE curriculum guidelines (CS2013) recommends computer systems as a new body of knowledge with the
             goal of a unified systems perspective.
           </p>
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 flex-col md:flex-row">
             <Button variant="secondary" asChild>
               <Link href="/docs">
                 View Additional Resources <ArrowRight />
