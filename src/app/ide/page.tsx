@@ -1,4 +1,5 @@
 import SiteHeader from "../components/site-header";
+import Ide from "./components/ide";
 
 const Page = async () => {
   return (
@@ -8,3 +9,5 @@ const Page = async () => {
     </>
   );
 };
+
+export default Page;
