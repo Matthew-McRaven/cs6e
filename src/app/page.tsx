@@ -11,12 +11,14 @@ import { ResourcesVariant } from "./components/resources/resources";
 import JoinUs from "./components/join-us";
 import { EditionSummaryVariant } from "./components/edition-summary/edition-summary";
 
-export default function Home() {
+export default async function Home() {
+  const sixthEdition = await sixth.getSixthEdition();
+
   return (
     <>
       <div className="flex min-h-screen flex-col">
         <main>
-          <Hero />
+          <Hero edition={sixthEdition} />
           <SiteHeader />
           <ResourcesVariant />
           <Resources />
@@ -33,6 +35,7 @@ export default function Home() {
 }
 
 import { FileText, AlertCircle, Bug, Code, Search, Book } from "lucide-react";
+import { sixth } from "@/services/book";
 
 const highImpactFeatures = [
   {

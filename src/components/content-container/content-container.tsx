@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface ContentContainerProps {
   children: ReactNode;
-  variant?: "primary" | "secondary" | "gradient" | "fourthEdition";
+  variant?: "primary" | "secondary" | "gradient" | "fourthEdition" | "blue-gradient" | "gray-gradient";
 }
 
 const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "primary" }) => {
@@ -12,8 +12,9 @@ const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "prim
     primary: "",
     fourthEdition: "bg-blue-50",
     secondary: "bg-violet-50",
-
+    "blue-gradient": "bg-gradient-to-br from-blue-600 via-blue-400 to-orange-400 opacity-90",
     gradient: "bg-gradient-to-br from-purple-900 via-purple-800 to-amber-700 opacity-90",
+    "gray-gradient": "bg-gradient-to-br from-black via-gray-800 to-gray-600 opacity-90",
   };
 
   return (
