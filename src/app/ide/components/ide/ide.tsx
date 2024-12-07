@@ -3,7 +3,36 @@
 import {FC, useState} from "react";
 import {useEffect}  from "react";
 import {qtLoad} from "./qtloader";
+import Script from 'next/script'
 
+function doLoad(setLoaded:(arg0:boolean)=>unknown, setErrorText:(arg0:string)=>unknown) {
+  const screen = document.querySelector("#screen")
+  try {
+    const inner = async ()=> {
+      await qtLoad({
+        qt: {
+          onLoaded: () => setLoaded(true),
+          onExit: (exitData: { code: number, text?: string }) => {
+            const lines = [
+              `Application exit with code ${exitData.code}`,
+              exitData.text ? ` (${exitData.text})` : ''
+            ]
+            setErrorText(lines.join("\n"))
+            setLoaded(false)
+          },
+          // @ts-expect-error, injected into window by qtLoad.
+          entryFunction: window.pepp_entry,
+          containerElements: [screen],
+        }
+      });
+    }
+    inner().catch(console.error)
+  } catch (e) {
+    console.error(e);
+    // @ts-expect-error, injected by WASM runtime
+    console.error(e.stack);
+  }
+}
 const Ide: FC = () => {
   const [loaded, setLoaded] = useState<boolean>(false)
   const [errorText, setErrorText] = useState("")
@@ -20,40 +49,8 @@ const Ide: FC = () => {
     asyncInner().catch(console.log)
   }, []);
 
-  // Start the Qt application and handle its lifecycle events.
-  useEffect(()=> {
-    const asyncInner = async () => {
-      const screen = document.querySelector("#screen")
-      try {
-        await qtLoad({
-          qt: {
-            onLoaded: () => setLoaded(true),
-            onExit: (exitData: { code: number, text?: string }) => {
-              const lines = [
-                `Application exit with code ${exitData.code}`,
-                exitData.text ? ` (${exitData.text})` : ''
-              ]
-              setErrorText(lines.join("\n"))
-              setLoaded(false)
-            },
-            // @ts-expect-error, injected into window by qtLoad.
-            entryFunction: window.pepp_entry,
-            containerElements: [screen],
-          }
-        });
-      } catch (e) {
-        console.error(e);
-        // @ts-expect-error, injected by WASM runtime
-        console.error(e.stack);
-      }
-    }
-    asyncInner().catch(console.log)
-  },[])
-
-
   return <div>
-    {/*Needs to be sync, otherwise my useEffect to do the load explodes.*/}
-    <script src="https://compsys-pep.com/pepp.js"/>
+    <Script async src="https://compsys-pep.com/pepp.js" onReady={() => doLoad(setLoaded, setErrorText)}/>
     <figure id="qtspinner" style={{"display":loaded ? "none" :"block"}}>
       <center>
         <img src="https://compsys-pep.com/qtlogo.svg" width="320" height="200"/>
