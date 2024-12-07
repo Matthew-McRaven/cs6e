@@ -1,5 +1,3 @@
-import type { FC } from "react";
-
 import { Menu } from "lucide-react";
 import Link from "next/link";
 
@@ -13,8 +11,9 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@components/ui/navigation-menu";
+import { getPastEditions } from "@/services/book";
 
-const navigationItems = [
+const createNavigationItems = (editions: Awaited<ReturnType<typeof getPastEditions>>) => [
   {
     title: "Preface",
     href: "/preface",
@@ -26,11 +25,10 @@ const navigationItems = [
   {
     title: "Editions",
     href: "/editions",
-    subMenu: [
-      { title: "Fith Edition", href: "#" },
-      { title: "Fourth Edition", href: "#" },
-      { title: "Chinese Edition", href: "#" },
-    ],
+    subMenu: editions.map((edition) => ({
+      title: edition.editionName,
+      href: `/editions/${edition.slug}`,
+    })),
   },
   {
     title: "Software Downloads",
@@ -55,7 +53,11 @@ const navigationItems = [
   },
 ];
 
-const SiteHeader: FC = () => {
+const SiteHeader = async () => {
+  const editions = await getPastEditions();
+
+  const navigationItems = createNavigationItems(editions);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex justify-center items-center px-8">
       <div className="container flex h-16 items-center">
