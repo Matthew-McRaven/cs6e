@@ -4,6 +4,7 @@ import {FC, useState} from "react";
 import {useEffect}  from "react";
 import {qtLoad} from "./qtloader";
 import Script from 'next/script'
+import Image from "next/image"
 
 function doLoad(setLoaded:(arg0:boolean)=>unknown, setErrorText:(arg0:string)=>unknown) {
   const screen = document.querySelector("#screen")
@@ -53,7 +54,7 @@ const Ide: FC = () => {
     <Script async src="https://compsys-pep.com/pepp.js" onReady={() => doLoad(setLoaded, setErrorText)}/>
     <figure id="qtspinner" style={{"display":loaded ? "none" :"block"}}>
       <center>
-        <img src="https://compsys-pep.com/qtlogo.svg" width="320" height="200"/>
+        <Image alt="Placeholder icon while app loads" priority={true} src="https://compsys-pep.com/qtlogo.svg" width="320" height="200"/>
         <strong>Loading Pepp IDE</strong>
         <div id="qtstatus">{errorText}</div>
         <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
