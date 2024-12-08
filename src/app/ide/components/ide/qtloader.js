@@ -117,6 +117,7 @@ export async function qtLoad(config)
         config.instantiateWasm = async (imports, successCallback) =>
         {
             try {
+                // eslint-disable-next-line @next/next/no-assign-module-variable
                 const module = await config.qt.module;
                 successCallback(
                     await WebAssembly.instantiate(module, imports), module);
@@ -285,6 +286,7 @@ export function QtLoader(qtConfig) {
     let qtloader = {
         exitCode: undefined,
         exitText: "",
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         loadEmscriptenModule: _name => {
             try {
                 qtLoad(emscriptenConfig);
