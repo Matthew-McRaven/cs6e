@@ -43,7 +43,7 @@ const Ide: FC = () => {
       const {fetch: origFetch} = window;
       window.fetch = async (...args) => {
         // If trying to fetch
-        if (String(args[0]).match(/wasm$/i)) return await origFetch("https://compsys-pep.com/" + args[0], ...args.slice(1))
+        if (String(args[0]).match(/wasm$/i)) return await origFetch("https://compsys-pep.com/" + args[0], args[1])
         else return await origFetch(...args);
       };
     };
