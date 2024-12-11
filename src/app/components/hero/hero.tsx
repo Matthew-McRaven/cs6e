@@ -12,14 +12,14 @@ interface HeroProps {
   edition: Edition;
 }
 
-const gradientMapping = (slug: string): ComponentProps<typeof ContentContainer>["variant"] => {
+const gradientMapping = (name: string): ComponentProps<typeof ContentContainer>["variant"] => {
   return (
     (
       {
         "Chinese Edition": "gray-gradient",
         "Fourth Edition": "blue-gradient",
       } as const
-    )[slug] || "gradient"
+    )[name] || "gradient"
   );
 };
 

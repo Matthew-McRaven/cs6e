@@ -7,7 +7,6 @@ import Hero from "./components/hero";
 import About from "./components/about";
 import EditionSummary from "./components/edition-summary";
 import Resources from "./components/resources";
-import { ResourcesVariant } from "./components/resources/resources";
 import JoinUs from "./components/join-us";
 import { EditionSummaryVariant } from "./components/edition-summary/edition-summary";
 
@@ -20,12 +19,11 @@ export default async function Home() {
         <main>
           <Hero edition={sixthEdition} />
           <SiteHeader />
-          <ResourcesVariant />
           <Resources />
           <PepNine />
           <About />
-          <EditionSummary />
-          <EditionSummaryVariant />
+          {/* <EditionSummary />
+          <EditionSummaryVariant /> */}
           <JoinUs />
         </main>
         <footer className="min-h-[100px] bg-neutral-800"></footer>
