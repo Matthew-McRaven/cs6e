@@ -3,10 +3,10 @@ import Ide from "./components/ide";
 
 const Page = async () => {
   return (
-    <>
+    <div className="h-full flex flex-col">
       <SiteHeader />
       <Ide />
-    </>
+    </div>
   );
 };
 
