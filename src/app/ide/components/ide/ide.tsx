@@ -88,7 +88,7 @@ const useIde = () => {
 
 const Ide: FC = () => {
   const [scriptError, setScriptError] = useState("");
-  const { loadIde, status, isLoading, errorText, screenRef } = useIde();
+  const { loadIde, status, errorText, screenRef } = useIde();
 
   const error = scriptError || errorText;
 

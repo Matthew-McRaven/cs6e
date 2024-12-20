@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { useEffect } from "react";
 
 import "./globals.css";
 
