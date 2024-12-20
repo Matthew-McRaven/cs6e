@@ -1,47 +1,60 @@
-import type { FC } from "react";
-
-import Link from "next/link";
+import type { FC, ReactNode } from "react";
 
 import ContentContainer from "@components/content-container";
-import { Text } from "@/components/typography";
-import { Button } from "@/components/ui/button";
-import { List, ListItem } from "@/components/list";
 
-const About: FC = () => {
+import Image from "next/image";
+
+interface Author {
+  name: string;
+  image: string;
+  bio: string;
+  achievements: {
+    icon: ReactNode;
+    text: string;
+  }[];
+}
+
+type AuthorProps = Author;
+
+const Author: FC<AuthorProps> = ({ name, image, bio, achievements }) => {
   return (
-    <ContentContainer>
-      <div className="container grid grid-cols-1 items-start gap-8 md:grid-cols-2 lg:py-32">
-        <div className="flex flex-col items-center">
-          {/* eslint-disable @next/next/no-img-element */}
-          <img
-            className="rounded w-40"
-            src="https://seaver.pepperdine.edu/academics/faculty/images/stan-warford-209639.jpg"
-            alt="Picture of J. Stanley Warford, author of the book"
-          />
-          <Text variant="large">J. Stanley Warford</Text>
-          <Link className="pt-2 text-center" href="https://seaver.pepperdine.edu/academics/faculty/stan-warford/">
-            <Text variant="muted">Professor of Computer Science</Text>
-            <Text variant="muted">Pepperdine University</Text>
-          </Link>
+    <div className="space-y-6">
+      <div className="flex justify-center">
+        <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-xl">
+          <Image src={image} alt={name} layout="fill" objectFit="cover" className="rounded-full" />
         </div>
-        <div>
-          <p>
-            Two courses, <span className="font-bold">Computer Systems</span> and{" "}
-            <span className="font-bold">Computer Organization</span> are available on YouTube, or within the Resources
-            section of this site.
-          </p>
-          <List>
-            <ListItem>Video-recorded lectures</ListItem>
-            <ListItem>Lecture slides</ListItem>
-            <ListItem>Other resources</ListItem>
-          </List>
-          <Button asChild>
-            <Link href="#">Visit the Resources page</Link>
-          </Button>
+      </div>
+      <h3 className="text-2xl font-semibold text-gray-800 text-center">{name}</h3>
+      <p className="text-gray-600 leading-relaxed text-center">{bio}</p>
+      <div className="grid grid-cols-1 gap-3">
+        {achievements.map((achievement, index) => (
+          <div key={index} className="flex items-center space-x-2">
+            {achievement.icon}
+            <span className="text-sm text-gray-700">{achievement.text}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+interface AuthorSectionProps {
+  authors: Author[];
+}
+
+const AuthorSection: FC<AuthorSectionProps> = ({ authors }) => {
+  return (
+    <ContentContainer className="py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">Meet the Authors</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          {authors.map((author, index) => (
+            <Author key={index} {...author} />
+          ))}
         </div>
       </div>
     </ContentContainer>
   );
 };
 
-export default About;
+export default AuthorSection;

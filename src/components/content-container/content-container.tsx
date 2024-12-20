@@ -5,9 +5,10 @@ import { cn } from "@/lib/utils";
 interface ContentContainerProps {
   children: ReactNode;
   variant?: "primary" | "secondary" | "gradient" | "fourthEdition" | "blue-gradient" | "gray-gradient";
+  className?: string;
 }
 
-const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "primary" }) => {
+const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "primary", className }) => {
   const variantMapping = {
     primary: "",
     fourthEdition: "bg-blue-50",
@@ -18,7 +19,7 @@ const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "prim
   };
 
   return (
-    <div className={cn("w-full flex flex-col justify-center items-center p-8", variantMapping[variant])}>
+    <div className={cn("w-full flex flex-col justify-center items-center p-8", variantMapping[variant], className)}>
       <div className="container ">{children}</div>
     </div>
   );
