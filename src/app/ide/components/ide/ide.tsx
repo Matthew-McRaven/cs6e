@@ -117,13 +117,17 @@ const Ide: FC = () => {
           <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
         </center>
       </figure>
-      {/* <div className="flex-1 bg-slate-300 w-full">hi</div> */}
       <div
         id="screen"
         ref={screenRef}
-        className="flex-1 w-full"
+        className="flex-1 w-full mt-[-24px]"
         style={{ display: status === "success" ? "block" : "none" }}
-      />
+      >
+        <div aria-hidden className="invisible">
+          {/* don't remove this. Magic line of code */}
+          here to allow react to update
+        </div>
+      </div>
     </div>
   );
 };
