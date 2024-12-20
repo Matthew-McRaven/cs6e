@@ -1,47 +1,113 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { qtLoad } from "./qtloader";
 import Script from "next/script";
 import Image from "next/image";
 
-function doLoad(setLoaded: (arg0: boolean) => unknown, setErrorText: (arg0: string) => unknown) {
-  const screen = document.querySelector("#screen");
-  try {
-    const inner = async () => {
-      await qtLoad({
-        qt: {
-          onLoaded: () => setLoaded(true),
-          onExit: (exitData: { code: number; text?: string }) => {
-            const lines = [`Application exit with code ${exitData.code}`, exitData.text ? ` (${exitData.text})` : ""];
-            setErrorText(lines.join("\n"));
-            setLoaded(false);
-          },
-          // @ts-expect-error
-          entryFunction: window.pepp_entry,
-          containerElements: [screen],
-        },
-      });
-    };
-    inner().catch(console.error);
-  } catch (e) {
-    console.error(e);
-    // @ts-expect-error, injected by WASM runtime
-    console.error(e.stack);
+if (typeof window !== "undefined") {
+  const originalFetch = window.fetch;
+
+  window.fetch = (...args) => {
+    const [resource, options] = args;
+
+    if (resource?.toString().match(/wasm$/i)) {
+      return originalFetch("https://compsys-pep.com/" + resource, options);
+    }
+
+    return originalFetch(...args);
+  };
+}
+
+declare global {
+  interface Window {
+    pepp_entry: () => void;
   }
 }
-const Ide: FC = () => {
-  const [loaded, setLoaded] = useState<boolean>(false);
+
+function loadPep(
+  node: HTMLDivElement,
+  config: { onSuccess: () => void; onError: (message: string) => void }
+): Promise<void> {
+  return qtLoad({
+    qt: {
+      onLoaded: config.onSuccess,
+      onExit: (exitData: { code: number; text?: string }) => {
+        const lines = [`Application exit with code ${exitData.code}`, exitData.text ? ` (${exitData.text})` : ""];
+
+        config.onError(lines.join("\n"));
+      },
+      entryFunction: window.pepp_entry,
+      containerElements: [node],
+    },
+  });
+}
+
+const useIde = () => {
+  const screenRef = useRef<HTMLDivElement>(null);
+  const [status, setStatus] = useState<"idle" | "loading" | "error" | "success">("idle");
   const [errorText, setErrorText] = useState("");
 
+  const loadIde = () => {
+    if (!screenRef.current) {
+      return;
+    }
+
+    setStatus("loading");
+
+    loadPep(screenRef.current, {
+      onSuccess: () => setStatus("success"),
+      onError: (message) => {
+        setStatus("error");
+        setErrorText(message);
+      },
+    })
+      .then(() => {
+        setStatus("success");
+      })
+      .catch((error) => {
+        let message = "Something went very wrong";
+
+        if (error instanceof Error) {
+          message = error.message;
+        }
+
+        setErrorText(message);
+      });
+  };
+
+  return {
+    screenRef,
+    loadIde,
+    status,
+    errorText,
+    isLoading: status === "loading",
+    isError: status === "error",
+  };
+};
+
+const Ide: FC = () => {
+  const [scriptError, setScriptError] = useState("");
+  const { loadIde, status, isLoading, errorText, screenRef } = useIde();
+
+  const error = scriptError || errorText;
+
+  if (error) {
+    return <p className="text-red-500">{error}</p>;
+  }
+
   return (
-    <div>
-      <Script async src="https://compsys-pep.com/pepp.js" onReady={() => doLoad(setLoaded, setErrorText)} />
-      <figure id="qtspinner" style={{ display: loaded ? "none" : "block" }}>
+    <div className="flex-1 flex flex-col">
+      <Script
+        src="https://compsys-pep.com/pepp.js"
+        onError={(error) => setScriptError("script loading error " + error.toString())}
+        onReady={loadIde}
+      />
+      <figure id="qtspinner" style={{ display: status !== "success" ? "block" : "none" }}>
         <center>
           <Image
+            priority
             alt="Placeholder icon while app loads"
-            priority={true}
             src="https://compsys-pep.com/qtlogo.svg"
             width="320"
             height="200"
@@ -51,7 +117,13 @@ const Ide: FC = () => {
           <noscript>JavaScript is disabled. Please enable JavaScript to use this application.</noscript>
         </center>
       </figure>
-      <div id="screen" style={{ display: loaded ? "blocK" : "none", width: "100%", height: "100vh" }} />
+      {/* <div className="flex-1 bg-slate-300 w-full">hi</div> */}
+      <div
+        id="screen"
+        ref={screenRef}
+        className="flex-1 w-full"
+        style={{ display: status === "success" ? "block" : "none" }}
+      />
     </div>
   );
 };
