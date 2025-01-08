@@ -1,14 +1,19 @@
-import type { ReactNode, FC } from "react";
+import type { ReactNode, FC, ComponentProps } from "react";
 
 import { cn } from "@/lib/utils";
+
+type C = ComponentProps<"a">;
 
 interface ContentContainerProps {
   children: ReactNode;
   variant?: "primary" | "secondary" | "gradient" | "fourthEdition" | "blue-gradient" | "gray-gradient";
   className?: string;
+  as?: keyof JSX.IntrinsicElements;
 }
 
-const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "primary", className }) => {
+const ContentContainer: FC<ContentContainerProps> = ({ as, children, variant = "primary", className }) => {
+  const Component = as || "div";
+
   const variantMapping = {
     primary: "",
     fourthEdition: "bg-blue-50",
@@ -19,9 +24,11 @@ const ContentContainer: FC<ContentContainerProps> = ({ children, variant = "prim
   };
 
   return (
-    <div className={cn("w-full flex flex-col justify-center items-center p-8", variantMapping[variant], className)}>
+    <Component
+      className={cn("w-full flex flex-col justify-center items-center p-24", variantMapping[variant], className)}
+    >
       <div className="container ">{children}</div>
-    </div>
+    </Component>
   );
 };
 

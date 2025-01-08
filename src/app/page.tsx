@@ -18,21 +18,11 @@ export default async function Home() {
       name: "J. Stanley Warford",
       image: "/stan.jpg",
       bio: "Dr. Stan Warford is a distinguished expert in computer science with decades of experience in teaching and research. His clear and practical approach to topics like computer architecture and programming has made him a favorite among students and colleagues alike.",
-      achievements: [
-        { icon: <Award className="w-5 h-5 text-violet-600" />, text: "Achievement 1" },
-        { icon: <BookOpen className="w-5 h-5 text-violet-600" />, text: "Achievement 2" },
-        { icon: <Users className="w-5 h-5 text-violet-600" />, text: "Achievement 3" },
-      ],
     },
     {
       name: "Matthew McRaven",
       image: "/matthew.jpg",
       bio: "Matthew McRaven is a computer systems architect with a deep focus on GPU design and high-performance computing. With an undergraduate degree from Pepperdine University and a master’s from Georgetown, his innovative work in system architecture highlights his commitment to advancing modern computing.",
-      achievements: [
-        { icon: <GraduationCap className="w-5 h-5 text-violet-600" />, text: "Achievement 1" },
-        { icon: <Award className="w-5 h-5 text-violet-600" />, text: "Achievement 2" },
-        { icon: <BookOpen className="w-5 h-5 text-violet-600" />, text: "Achievement 3" },
-      ],
     },
   ];
 
@@ -49,9 +39,15 @@ export default async function Home() {
           <AuthorSection authors={authors} />
           {/* <EditionSummary />
           <EditionSummaryVariant /> */}
-          <JoinUs />
         </main>
-        <footer className="min-h-[100px] bg-neutral-800"></footer>
+        <ContentContainer
+          variant="secondary"
+          as="footer"
+          className="min-h-[100px] flex flex-col items-center justify-center"
+        >
+          <JoinUs />
+          <div className="text-center">&#169; Computer Systems {new Date().getFullYear()}</div>
+        </ContentContainer>
       </div>
     </>
   );

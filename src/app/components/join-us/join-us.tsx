@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const JoinUs = () => {
   return (
-    <ContentContainer variant="secondary">
+    <ContentContainer>
       <div className="w-full flex flex-col items-center justify-center py-32">
         <Card className="w-full max-w-md mx-auto overflow-hidden">
           <CardContent className="p-6 bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
