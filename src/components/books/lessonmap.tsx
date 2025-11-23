@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo } from 'react';
 import {
   ReactFlow,
   Background,
@@ -16,7 +16,6 @@ import {
 import '@xyflow/react/dist/style.css';
 
 import { lessons, edges as lessonEdges, LessonType } from '../../services/interactive_book/lesson';
-import { useRouter } from 'next/navigation';
 
 // basic colors by lesson type
 const typeColors: Record<LessonType, string> = {
@@ -165,8 +164,6 @@ function buildInitialGraph(): { nodes: Node<LessonNodeData>[]; edges: Edge[] } {
 // ---- React component ----
 
 export const LessonMap: React.FC = () => {
-  const router = useRouter();
-
   const { nodes: initialNodes, edges: initialEdges } = useMemo(
     () => buildInitialGraph(),
     []
@@ -174,16 +171,6 @@ export const LessonMap: React.FC = () => {
 
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
-
-  const onNodeClick = useCallback(
-    (_: React.MouseEvent, node: Node<LessonNodeData>) => {
-      const lesson = lessons.find((l) => l.id === node.id);
-      if (lesson) {
-        router.push(lesson.path);
-      }
-    },
-    [router]
-  );
 
   const bookmarkLessonId = 'loops'; // example; plug your own state here
 
@@ -211,7 +198,6 @@ export const LessonMap: React.FC = () => {
         edges={edges}
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
-        onNodeClick={onNodeClick}
         fitView
         fitViewOptions={{ padding: 0.2 }}
         minZoom={0.25}
