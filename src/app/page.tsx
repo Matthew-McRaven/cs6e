@@ -27,6 +27,9 @@ export default async function Home() {
           <EditionSummary />
           <EditionSummaryVariant />
           <JoinUs />
+          <div style={{ height: 'calc(100vh - 64px)' }}>
+            <LessonMap />
+          </div>
         </main>
         <footer className="min-h-[100px] bg-neutral-800"></footer>
       </div>
@@ -36,6 +39,7 @@ export default async function Home() {
 
 import { FileText, AlertCircle, Bug, Code, Search, Book } from "lucide-react";
 import { sixth } from "@/services/book";
+import { LessonMap } from "@/components/books/lessonmap";
 
 const highImpactFeatures = [
   {
